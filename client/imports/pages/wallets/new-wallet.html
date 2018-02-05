@@ -1,0 +1,60 @@
+<ion-header>
+  <user-header></user-header>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      <ion-list>
+        <button ion-item [routerLink]="['/create-personal']">
+          <ion-icon name="card" item-start></ion-icon>
+          New personal wallet
+          <ion-icon color="grey" name="arrow-forward" item-end></ion-icon>
+        </button>
+      </ion-list>
+    </ion-card-header>
+  </ion-card>
+  <ion-card>
+    <ion-card-header>
+      <ion-list>
+        <button ion-item [routerLink]="['/create-shared']">
+          <ion-icon name="card" item-start></ion-icon>
+          Create shared wallet
+          <ion-icon color="grey" name="arrow-forward" item-end></ion-icon>
+        </button>
+      </ion-list>
+    </ion-card-header>
+  </ion-card>
+  <ion-card>
+    <ion-card-header>
+      <ion-list>
+        <button ion-item [routerLink]="['/join-shared']">
+          <ion-icon name="card" item-start></ion-icon>
+          Join shared wallet
+          <ion-icon color="grey" name="arrow-forward" item-end></ion-icon>
+        </button>
+      </ion-list>
+    </ion-card-header>
+  </ion-card>
+  <ion-card>
+    <ion-card-header>
+      <ion-list>
+        <button ion-item [routerLink]="['/wallet-import']">
+          <ion-icon name="card" item-start></ion-icon>
+          Import wallet
+          <ion-icon color="grey" name="arrow-forward" item-end></ion-icon>
+        </button>
+      </ion-list>
+    </ion-card-header>
+  </ion-card>
+  <ion-card>
+    <ion-card-content>
+      <p>TODO:</p>
+      <p>- improve / replace icons</p>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
+
+<ion-footer>
+  <user-footer></user-footer>
+</ion-footer>

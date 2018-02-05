@@ -1,0 +1,105 @@
+<ion-header>
+  <ion-navbar color="app">
+    <button color="light" ion-button icon-only menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title class="center">Our Application Name</ion-title>
+    <ion-buttons end [hidden]="!user">
+      <!--<a color="light" ion-button [routerLink]="['/settings']">{{ user?.emails[0].address }}</a>-->
+      <a color="light" logout ion-button icon-only class="option option-logout">
+        <ion-icon name="log-out"></ion-icon>
+      </a>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="outer-content">
+  <ion-card>
+    <ion-card-header>
+      <ion-item>
+        <h2>How do you like our Application?</h2>
+        <button color="dark" ion-button icon-only item-right clear>
+          <ion-icon name='close'></ion-icon>
+        </button>
+      </ion-item>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list>
+        <ion-item>
+          <p>TODO: add stars to rate application and button to save it</p>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+  <ion-card>
+    <ion-card-header>
+      <ion-item>
+        <h2>Recent Transactions</h2>
+        <button color="dark" ion-button icon-only item-right clear [routerLink]="['/activity']">
+          <ion-icon name='arrow-forward'></ion-icon>
+        </button>
+      </ion-item>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list [hidden]="!ready" no-lines>
+        <ion-item>
+          <p>TODO: add list of recent transactions</p>
+        </ion-item>
+        <button ion-item [routerLink]="['/txp-view', txp.walletId]" *ngFor="let txp of txProposals | async">
+          <ion-icon name='planet' item-start></ion-icon>
+          {{txp.walletName || txp.walletId}}
+          <p [hidden]="!txp?.amount">{{(txp.amount/100/1000/1000).toFixed(5)}} BTC</p>
+        </button>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+  <ion-card>
+    <ion-card-header>
+      <ion-item>
+        <h2>Wallets</h2>
+        <button color="dark" ion-button icon-only item-right clear [routerLink]="['/new-wallet']">
+          <ion-icon name="add"></ion-icon>
+        </button>
+      </ion-item>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list [hidden]="!ready">
+        <button ion-item [routerLink]="['/wallet', wallet.walletId]" *ngFor="let wallet of wallets | async">
+          <ion-icon name="planet" item-start></ion-icon>
+          {{wallet.walletName || wallet.walletId}}
+          <p [hidden]="!wallet?.totalAmount">{{(wallet.totalAmount/100/1000/1000).toFixed(5)}} BTC</p>
+          <ion-icon color="grey" name="arrow-forward" item-end></ion-icon>
+        </button>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+  <ion-card>
+    <ion-card-header>
+      <ion-item>
+        <h2>Next Steps</h2>
+        <button color="dark" ion-button icon-only item-right clear>
+          <ion-icon name='arrow-up'></ion-icon>
+        </button>
+      </ion-item>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list>
+        <ion-item>
+          <p>TODO: add link to the page <b>Buy or Sell Bitcoin</b></p>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+  <ion-card>
+    <ion-card-content>
+      <p>TODO:</p>
+      <p>- replace wallet icon with BTC icon</p>
+      <p>- add icons for options of the footer menu</p>
+      <p>- add main menu or remove it</p>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
+
+<ion-footer>
+  <user-footer></user-footer>
+</ion-footer>

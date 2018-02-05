@@ -1,0 +1,23 @@
+<ion-header>
+  <user-header></user-header>
+</ion-header>
+
+<ion-content>
+  <ion-list no-lines [hidden]="!ready">
+    <ion-item>
+      <p>Wallet ID: <b>{{walletId}}</b></p>
+      <p>Wallet Name: <b>{{walletName}}</b></p>
+      <p>Address: <b>{{address}}</b></p>
+    </ion-item>
+    <ion-item>
+      <ion-label>Choose Wallet</ion-label>
+      <ion-select [selectOptions]="selectOptions" interface="popover" [(ngModel)]="walletId" (ngModelChange)="change($event)">
+        <ion-option *ngFor="let wallet of wallets | async" [value]="wallet.walletId" [selected]="walletId==wallet.walletId">{{wallet.walletName}}</ion-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+</ion-content>
+
+<ion-footer>
+  <user-footer></user-footer>
+</ion-footer>

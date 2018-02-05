@@ -1,0 +1,12 @@
+<ion-header>
+  <ion-navbar color="app">
+    <ion-buttons>
+      <ion-title>Landing Page</ion-title>
+    </ion-buttons>
+
+    <ion-buttons end [hidden]="user">
+      <a color="light" ion-button [routerLink]="['/login']">Login</a>
+      <a color="light" ion-button [routerLink]="['/signup']">Sign up</a>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>

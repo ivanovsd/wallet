@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-navbar color="app">
+    <ion-buttons>
+      <ion-title>Reset Password</ion-title>
+    </ion-buttons>
+
+    <ion-buttons end [hidden]="user">
+      <a color="light" ion-button [routerLink]="['/login']">Login</a>
+      <a color="light" ion-button [routerLink]="['/signup']">Sign up</a>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="resetForm" #f="ngForm" (ngSubmit)="reset()" layout-fill layout-padding layout-margin>
+    <ion-title>Reset Your Password</ion-title>
+    <ion-list>
+      <ion-item>
+        <ion-label floating>New password</ion-label>
+        <ion-input type="password" formControlName="password" value=""></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Confirm</ion-label>
+        <ion-input type="password" formControlName="passwordConfirm" value=""></ion-input>
+      </ion-item>
+    </ion-list>
+
+    <ion-buttons>
+      <button ion-button type="submit">Reset</button>
+    </ion-buttons>
+
+    <ion-toolbar [hidden]="error == ''" color="danger" layout-fill layout-padding layout-margin>
+      <p>{{ error }}</p>
+    </ion-toolbar>
+  </form>
+</ion-content>

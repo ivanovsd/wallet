@@ -1,0 +1,30 @@
+<ion-header>
+  <user-header></user-header>
+</ion-header>
+
+<ion-content>
+  <!--<div *ngFor="let wallet of wallets | async" [hidden]="!ready">
+    <ion-title><span [hidden]="!wallet.walletName">{{wallet.walletName}} - </span>{{wallet.walletId}}</ion-title>
+    <ion-title>{{wallet.xPrivKey}}</ion-title>
+  </div>-->
+
+  <ion-list no-lines *ngFor="let wallet of wallets | async" [hidden]="!ready">
+    <ion-list-header>Security</ion-list-header>
+    <button ion-item [routerLink]="['/wallet-backup', wallet.walletId]">
+      <ion-icon name="lock" item-start></ion-icon>
+      Backup Wallet
+    </button>
+  </ion-list>
+
+  <ion-list no-lines *ngFor="let wallet of wallets | async" [hidden]="!ready">
+    <ion-list-header>Advanced</ion-list-header>
+    <button ion-item [routerLink]="['/wallet-delete', wallet.walletId]">
+      <ion-icon name="remove" item-start></ion-icon>
+      Delete Wallet
+    </button>
+  </ion-list>
+</ion-content>
+
+<ion-footer>
+  <user-footer></user-footer>
+</ion-footer>

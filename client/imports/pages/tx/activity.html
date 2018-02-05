@@ -1,0 +1,29 @@
+<ion-header>
+  <user-header></user-header>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-content>
+      <ion-list [hidden]="!ready" no-lines>
+        <ion-item>
+          <p>TODO: show full list of recent transactions<br> with following params:<br><br></p>
+          <p>- Received or Sent</p>
+          <p>- BTC amount</p>
+          <p>- Wallet name</p>
+          <p>- Created time</p>
+          <p>- Link to view details</p>
+        </ion-item>
+        <button ion-item [routerLink]="['/txp-view', txp.walletId]" *ngFor="let txp of txProposals | async">
+          <ion-icon name='planet' item-start></ion-icon>
+          {{txp.walletName || txp.walletId}}
+          <p [hidden]="!txp?.amount">{{(txp.amount/100/1000/1000).toFixed(5)}} BTC</p>
+        </button>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
+
+<ion-footer>
+  <user-footer></user-footer>
+</ion-footer>

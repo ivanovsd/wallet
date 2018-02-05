@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-navbar color="app">
+    <ion-buttons>
+      <ion-title>Sign Up</ion-title>
+    </ion-buttons>
+
+    <ion-buttons end [hidden]="user">
+      <a color="light" ion-button [routerLink]="['/login']">Login</a>
+      <a color="light" ion-button [routerLink]="['/signup']">Sign up</a>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="signupForm" #f="ngForm" (ngSubmit)="signup()" layout-fill layout-padding layout-margin>
+    <ion-title>Sign up with your email</ion-title>
+    <ion-list>
+      <ion-item>
+        <ion-label floating>Email</ion-label>
+        <ion-input type="email" formControlName="email" value=""></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>Password</ion-label>
+        <ion-input type="password" formControlName="password"></ion-input>
+      </ion-item>
+    </ion-list>
+
+    <ion-buttons>
+      <button ion-button type="submit">Sign Up</button>
+    </ion-buttons>
+
+    <ion-toolbar [hidden]="error == ''" color="danger" layout-fill layout-padding layout-margin>
+      <p>{{ error }}</p>
+    </ion-toolbar>
+  </form>
+</ion-content>

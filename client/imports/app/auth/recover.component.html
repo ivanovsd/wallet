@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-navbar color="app">
+    <ion-buttons>
+      <ion-title>Recover Password</ion-title>
+    </ion-buttons>
+
+    <ion-buttons end [hidden]="user">
+      <a color="light" ion-button [routerLink]="['/login']">Login</a>
+      <a color="light" ion-button [routerLink]="['/signup']">Sign up</a>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="recoverForm" #f="ngForm" (ngSubmit)="recover()" layout-fill layout-padding layout-margin>
+    <ion-title>Recover Your Password</ion-title>
+    <ion-list>
+      <ion-item>
+        <ion-label floating>Email</ion-label>
+        <ion-input type="email" formControlName="email" value=""></ion-input>
+      </ion-item>
+    </ion-list>
+
+    <ion-buttons>
+      <button ion-button type="submit">Recover</button>
+    </ion-buttons>
+
+    <ion-toolbar [hidden]="error == ''" color="danger" layout-fill layout-padding layout-margin>
+      <p>{{ error }}</p>
+    </ion-toolbar>
+  </form>
+</ion-content>

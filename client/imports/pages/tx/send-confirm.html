@@ -1,0 +1,28 @@
+<ion-header>
+  <user-header></user-header>
+</ion-header>
+
+<ion-content>
+  <ion-list no-lines [hidden]="!ready">
+    <ion-item>
+      <h2>Sending</h2>
+      <h1>{{amount}} BTC</h1>
+      <h3>To</h3>
+      <p>{{address}}</p>
+    </ion-item>
+    <ion-item>
+      <ion-label>From</ion-label>
+      <ion-select interface="popover" [(ngModel)]="walletId" (ngModelChange)="change($event)">
+        <ion-option *ngFor="let wallet of wallets | async" [value]="wallet.walletId" [selected]="walletId==wallet.walletId">{{wallet.walletName}}</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      {{wallet?.opened}}
+      <button ion-button (click)="send()">Send</button>
+    </ion-item>
+  </ion-list>
+</ion-content>
+
+<ion-footer>
+  <user-footer></user-footer>
+</ion-footer>

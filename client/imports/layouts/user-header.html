@@ -1,0 +1,12 @@
+<ion-navbar color="app">
+  <button color="light" ion-button icon-only menuToggle (click)="goBack()">
+    <ion-icon name="arrow-round-back"></ion-icon>
+  </button>
+  <ion-title class="center">{{title}}</ion-title>
+  <ion-buttons end [hidden]="!user">
+    <!--<a color="light" ion-button [routerLink]="['/settings']">{{ user?.emails[0].address }}</a>-->
+    <a color="light" ion-button icon-only logout class="option option-logout">
+      <ion-icon name="log-out"></ion-icon>
+    </a>
+  </ion-buttons>
+</ion-navbar>

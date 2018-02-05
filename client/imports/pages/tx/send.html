@@ -1,0 +1,24 @@
+<ion-header>
+  <user-header></user-header>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="sendForm" #f="ngForm" (ngSubmit)="send()" layout-fill layout-padding layout-margin>
+    <ion-list no-lines>
+      <ion-item>
+        <ion-label floating>Recipient</ion-label>
+        <ion-input type="text" (change)="send()" (paste)="send()" formControlName="recipient" value=""></ion-input>
+      </ion-item>
+    </ion-list>
+
+    <ion-toolbar [hidden]="error == ''" color="danger" layout-fill layout-padding layout-margin>
+      <p>{{ error }}</p>
+    </ion-toolbar>
+  </form>
+  <ion-list no-lines [hidden]="!ready">
+  </ion-list>
+</ion-content>
+
+<ion-footer>
+  <user-footer></user-footer>
+</ion-footer>

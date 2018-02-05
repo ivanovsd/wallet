@@ -1,0 +1,26 @@
+<ion-header>
+  <user-header></user-header>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="deleteForm" #f="ngForm" (ngSubmit)="delete()" layout-fill layout-padding layout-margin>
+    <ion-list no-lines>
+      <ion-item>
+        <ion-label floating>Type the recovery phrase to delete wallet (usually 12 words)</ion-label>
+        <ion-textarea type="textarea" formControlName="mnemonic" value=""></ion-textarea>
+      </ion-item>
+    </ion-list>
+
+    <ion-buttons>
+      <button ion-button type="submit">Delete Wallet</button>
+    </ion-buttons>
+
+    <ion-toolbar [hidden]="error == ''" color="danger" layout-fill layout-padding layout-margin>
+      <p>{{ error }}</p>
+    </ion-toolbar>
+  </form>
+</ion-content>
+
+<ion-footer>
+  <user-footer></user-footer>
+</ion-footer>

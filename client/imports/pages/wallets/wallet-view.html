@@ -1,0 +1,51 @@
+<ion-header>
+  <ion-navbar color="app">
+    <button color="light" ion-button icon-only menuToggle [routerLink]="['/wallets']">
+      <ion-icon name="arrow-round-back"></ion-icon>
+    </button>
+    <ion-title class="center" *ngFor="let wallet of wallets | async" [hidden]="!ready">
+      <div>{{wallet.walletName}}</div>
+      <div><strong class="size-36">{{(wallet.totalAmount/100/1000/1000).toFixed(5)}} BTC</strong></div>
+      <button [hidden]="wallet.availableConfirmedAmount===wallet.totalAmount" ion-button color="app" style="border:1px solid #fff">
+        <ion-icon name="checkmark-circle" style="margin-right: 7px"></ion-icon>
+        <strong>{{(wallet.availableConfirmedAmount/100/1000/1000).toFixed(5)}} BTC</strong>
+      </button>
+    </ion-title>
+    <ion-buttons end [hidden]="!user">
+      <!--<a color="light" ion-button [routerLink]="['/settings']">{{ user?.emails[0].address }}</a>-->
+      <a color="light" logout ion-button icon-only class="option option-logout">
+        <ion-icon name="log-out"></ion-icon>
+      </a>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <div *ngFor="let wallet of wallets | async" [hidden]="!ready">
+    <!--<ion-title><span [hidden]="!wallet.walletName">{{wallet.walletName}} - </span>{{wallet.walletId}}</ion-title>-->
+    <!--<ion-title [hidden]="!wallet.totalAmount">Total amount: {{(wallet.totalAmount/100/1000/1000).toFixed(5)}} BTC</ion-title>
+    <ion-title [hidden]="!wallet.totalConfirmedAmount">Total amount (confirmed): {{(wallet.totalConfirmedAmount/100/1000/1000).toFixed(5)}} BTC</ion-title>
+    <ion-title [hidden]="!wallet.lockedAmount">Locked amount: {{(wallet.lockedAmount/100/1000/1000).toFixed(5)}} BTC</ion-title>
+    <ion-title [hidden]="!wallet.availableAmount">Available amount: {{(wallet.availableAmount/100/1000/1000).toFixed(5)}} BTC</ion-title>-->
+
+    <ion-list>
+      <ion-list-header>Transactions</ion-list-header>
+      <ion-item *ngFor="let tx of wallet.txHistory">
+        <h2>{{tx.action}} {{(tx.amount/100/1000/1000).toFixed(5)}} BTC</h2>
+        <p>Confirmations: {{tx.confirmations}}</p>
+      </ion-item>
+    </ion-list>
+  </div>
+</ion-content>
+
+<!--<ion-list>
+  <ion-item-sliding *ngFor="let tx of txs">
+    <ion-item>
+      <a ion-button [routerLink]="['/tx', tx._id]">{{wallet.walletId}} {{wallet.walletName}}</a>
+    </ion-item>
+  </ion-item-sliding>
+</ion-list>-->
+
+<ion-footer>
+  <user-footer></user-footer>
+</ion-footer>

@@ -1,0 +1,29 @@
+<ion-header>
+  <user-header></user-header>
+</ion-header>
+
+<ion-content>
+  <ion-list no-lines>
+    <ion-list-header>Account Security</ion-list-header>
+    <button ion-item [routerLink]="['/account-backup']">
+      <ion-icon name="lock" item-start></ion-icon>
+      Backup
+    </button>
+    <button ion-item [routerLink]="['/account-restore']">
+      <ion-icon name="lock" item-start></ion-icon>
+      Restore
+    </button>
+  </ion-list>
+
+  <ion-list [hidden]="!ready" no-lines>
+    <ion-list-header>Wallets & Integrations</ion-list-header>
+    <button ion-item [routerLink]="['/wallet-settings', wallet.walletId]" *ngFor="let wallet of wallets | async">
+      <ion-icon name='planet' item-start></ion-icon>
+      {{wallet.walletName}}
+    </button>
+  </ion-list>
+</ion-content>
+
+<ion-footer>
+  <user-footer></user-footer>
+</ion-footer>
